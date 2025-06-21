@@ -15,6 +15,9 @@
   --color-primary: #000000;
   --color-primary-foreground: #ffffff;
 
+  --color-secondary: #ffffff;
+  --color-secondary-foreground: #000000;
+
   --color-product-background: #f0eeed;
   --color-primary-background: #000000;
 
@@ -39,13 +42,4 @@ body {
   font-family: var(--font-satoshi);
   font-weight: 400;
   font-size: var(--text-base);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--color-primary);
 }
