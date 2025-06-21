@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const satoshi = localFont({
+  src: "../../public/fonts/satoshi-variable.ttf",
+  variable: "--satoshi",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const intergralcf = localFont({
+  src: [{ path: "../../public/fonts/integralcf-bold.otf", weight: "700" }],
+  variable: "--integralcf",
 });
 
 export const metadata: Metadata = {
@@ -23,12 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className={`${intergralcf.variable} ${satoshi.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
