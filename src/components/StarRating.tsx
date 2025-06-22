@@ -11,13 +11,13 @@ export default function StarRating({
   return (
     <div className="flex gap-1 text-star">
       {Array.from({ length: rating }).map((_, idx) => (
-        <IoStarSharp key={idx} />
+        <IoStarSharp key={idx} style={{ fontSize: starSize }} />
       ))}
       <span
         className="overflow-hidden"
         style={{ width: (rating % 1) * starSize }}
       >
-        <IoStarSharp />
+        <IoStarSharp style={{ fontSize: starSize }} />
       </span>
     </div>
   );
