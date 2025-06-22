@@ -43,13 +43,13 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-muted pt-28 pb-12">
+    <footer className="bg-muted pt-32 sm:pt-28 pb-12">
       <Container>
-        <div className="grid grid-cols-[1.5fr_repeat(4,1fr)] gap-4">
+        <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-[1.5fr_1fr] md:grid-cols-[1.5fr_repeat(4,1fr)] gap-x-10 md:gap-x-4">
           <div>
             <NextLink
               href={"/"}
-              className="text-2xl font-bold text-primary font-integralcf inline-block mb-5"
+              className="text-2xl font-bold text-primary font-integralcf inline-block mb-3 sm:mb-4  md:mb-5"
             >
               Trendy Shop
             </NextLink>
@@ -68,10 +68,10 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="capitalize text-muted-foreground text-xl mb-5 font-medium">
+            <h3 className="capitalize text-muted-foreground text-xl mb-3 sm:mb-4 md:mb-5 font-medium">
               Company
             </h3>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-2 md:gap-3">
               {companyLinks.map((link) => (
                 <li key={link.id}>
                   <Link href={"/"}>{link.label}</Link>
@@ -80,10 +80,10 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="capitalize text-muted-foreground text-xl mb-5 font-medium">
+            <h3 className="capitalize text-muted-foreground text-xl mb-3 sm:mb-4 md:mb-5 font-medium">
               Help
             </h3>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-2 md:gap-3">
               {supportLinks.map((link) => (
                 <li key={link.id}>
                   <Link href={"/"}>{link.label}</Link>
@@ -92,10 +92,10 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="capitalize text-muted-foreground text-xl mb-5 font-medium">
+            <h3 className="capitalize text-muted-foreground text-xl mb-3 sm:mb-4 md:mb-5 font-medium">
               faq
             </h3>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-2 md:gap-3">
               {faqLinks.map((link) => (
                 <li key={link.id}>
                   <Link href={"/"}>{link.label}</Link>
@@ -104,10 +104,10 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="capitalize text-muted-foreground text-xl mb-5 font-medium">
+            <h3 className="capitalize text-muted-foreground text-xl mb-3 sm:mb-4 md:mb-5 font-medium">
               Resources
             </h3>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-2 md:gap-3">
               {resourcesLinks.map((link) => (
                 <li key={link.id}>
                   <Link href={"/"}>{link.label}</Link>
