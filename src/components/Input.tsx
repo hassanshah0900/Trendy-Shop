@@ -5,7 +5,7 @@ interface Props extends ComponentProps<"input"> {
   icon?: ReactNode;
 }
 export default function Input({ icon, className, ...props }: Props) {
-  if (icon)
+  if (!icon)
     return (
       <input
         className={twMerge(
@@ -18,7 +18,7 @@ export default function Input({ icon, className, ...props }: Props) {
   return (
     <div
       className={twMerge(
-        "flex py-3 px-5 has-[input:focus-visible]:outline-white outline-2 outline-offset-2 text-secondary-foreground bg-secondary justify-start items-center rounded-full gap-2 ",
+        "flex py-3 px-5 text-secondary-foreground bg-secondary justify-start items-center rounded-full gap-2 w-full",
         className
       )}
     >
