@@ -12,8 +12,8 @@ const variants = {
 };
 
 const displays = {
-  inline: "py-3 px-15",
-  block: "w-full py-3",
+  inline: "py-2 sm:py-3 px-12 sm:px-15",
+  block: "w-full py-2 sm:py-3",
   iconRound: "p-3",
   iconSquare: "p-3 rounded-md",
 };
