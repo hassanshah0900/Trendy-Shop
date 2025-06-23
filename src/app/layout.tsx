@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import Navbar from "@/components/Navbar";
+import Container from "@/components/Container";
+import Footer from "@/components/Footer";
+import NewsletterCTA from "@/components/NewsletterCTA";
+import Separator from "@/components/Separator";
 
 const satoshi = localFont({
   src: "../../public/fonts/satoshi-variable.ttf",
@@ -24,7 +29,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${intergralcf.variable} ${satoshi.variable}`}>
-      <body>{children}</body>
+      <body className="overflow-x-hidden text-sm md:text-base font-satoshi text-body bg-background">
+        <Container>
+          <Navbar />
+          <Separator />
+        </Container>
+        {children}
+        <div className="translate-y-1/3">
+          <Container>
+            <NewsletterCTA />
+          </Container>
+        </div>
+        <Footer />
+      </body>
     </html>
   );
 }
