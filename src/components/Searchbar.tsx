@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import Input from "./Input";
+import { useFilters } from "@/contexts/FilterContext";
+import { ChangeEvent, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import Button from "./Button";
 import { GrClose } from "react-icons/gr";
+import Button from "./Button";
+import Input from "./Input";
 
 export default function Searchbar() {
+  const { filters, setFilters } = useFilters();
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const openSearchBar = () => {
@@ -16,12 +18,18 @@ export default function Searchbar() {
   const closeSearchBar = () => {
     setOpen(false);
   };
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setFilters({ ...filters, search: e.currentTarget.value });
+  };
+
   return (
     <>
       <Input
         className="bg-muted max-w-[400px] w-full hidden md:flex"
         icon={<CiSearch />}
         placeholder="Search for Products..."
+        onChange={handleSearch}
       />
       <Button
         onClick={openSearchBar}
@@ -40,6 +48,7 @@ export default function Searchbar() {
           className="bg-muted w-full"
           icon={<CiSearch />}
           placeholder="Search for Products..."
+          onChange={handleSearch}
         />
         <Button
           onClick={closeSearchBar}
