@@ -6,13 +6,13 @@ import { GrClose } from "react-icons/gr";
 
 interface Props {
   children: ReactNode;
-  button: ReactNode;
+  buttonContent: ReactNode;
   alignment: "left" | "right";
   className?: string;
 }
 export default function Slider({
   children,
-  button,
+  buttonContent,
   alignment,
   className,
 }: Props) {
@@ -31,20 +31,22 @@ export default function Slider({
   return (
     <div className={className}>
       <Button onClick={openSlider} variant="secondary" display="iconRound">
-        {button}
+        {buttonContent}
       </Button>
       <dialog
         onClick={(e) => e.currentTarget === e.target && closeSlider()}
         ref={ref}
       >
         <div
-          className={`fixed transition-all top-0 h-full w-[80%] sm:w-1/2 md:w-1/3 p-3 bg-secondary ${setAlignmentClasses(
+          className={`fixed transition-all top-0 h-screen overflow-auto w-[80%] sm:w-1/2 md:w-1/3 p-3 bg-secondary ${setAlignmentClasses(
             alignment,
             isOpen
           )}`}
         >
           <div
-            className={`w-max ${alignment === "left" ? "ms-auto" : "me-auto"}`}
+            className={`w-max mb-4 ${
+              alignment === "left" ? "ms-auto" : "me-auto"
+            }`}
           >
             <Button
               onClick={closeSlider}
