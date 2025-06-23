@@ -64,15 +64,6 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-body {
-  color: var(--color-body);
-  background-color: var(--color-background);
-  font-family: var(--font-satoshi);
-  font-weight: 400;
-  font-size: var(--text-base);
-  /* scrollbar-gutter: "stable"; */
-}
-
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
