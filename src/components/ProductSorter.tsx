@@ -1,3 +1,4 @@
+import { SortValue, useFilters } from "@/contexts/FilterContext";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -5,14 +6,6 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-
-export type SortValue =
-  | "rating_asc"
-  | "rating_desc"
-  | "price_asc"
-  | "price_desc"
-  | "alphabetical_asc"
-  | "alphabetical_desc";
 
 const items: { label: string; value: SortValue }[] = [
   {
@@ -41,12 +34,8 @@ const items: { label: string; value: SortValue }[] = [
   },
 ];
 
-interface Props {
-  onValueChange: (value: SortValue) => void;
-  value: SortValue;
-}
-
-export default function ProductSorter({ onValueChange, value }: Props) {
+export default function ProductSorter() {
+  const { filters, setFilters } = useFilters();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -54,13 +43,16 @@ export default function ProductSorter({ onValueChange, value }: Props) {
           type="button"
           className="text-muted-foreground bg-muted py-1 px-2 rounded-md cursor-pointer"
         >
-          {items.find((item) => item.value === value)?.label || "Sort Products"}
+          {items.find((item) => item.value === filters.sort)?.label ||
+            "Sort Products"}
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuRadioGroup
-          value={value}
-          onValueChange={(value) => onValueChange(value as SortValue)}
+          value={filters.sort}
+          onValueChange={(value) =>
+            setFilters({ ...filters, sort: value as SortValue })
+          }
         >
           {items.map(({ value, label }) => (
             <DropdownMenuRadioItem key={value} value={value}>
