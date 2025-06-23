@@ -1,14 +1,16 @@
-import { BiMenu } from "react-icons/bi";
-import Button from "./Button";
-import Slider from "./Slider";
 import { TfiMenu } from "react-icons/tfi";
 import Link from "./Link";
+import Slider from "./Slider";
 
 export default function MobileNavbarLinks() {
   return (
-    <Slider className="block md:hidden" alignment="left" button={<TfiMenu />}>
+    <Slider
+      className="block md:hidden"
+      alignment="left"
+      buttonContent={<TfiMenu />}
+    >
       <nav>
-        <ul className="flex flex-col gap-3 mt-5">
+        <ul className="flex flex-col gap-3">
           <li>
             <Link href={"/"}>Shop</Link>
           </li>
