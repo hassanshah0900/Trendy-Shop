@@ -1,5 +1,5 @@
-import { Filters } from "@/app/shop/page";
-import { SortValue } from "@/components/ProductSorter";
+import { PriceRange } from "@/components/FilterPriceRange";
+import { Filters, SortValue } from "@/contexts/FilterContext";
 import { ProductType } from "@/types/product.type";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -15,28 +15,27 @@ export function getCategoriesFromProducts(products: ProductType[]) {
   return [...result];
 }
 
-export function getPriceRange(products: ProductType[]) {
-  const filteredProducts = sortProducts(products, "price_asc");
-  return {
-    low: filteredProducts[0].price,
-    high: filteredProducts[filteredProducts.length - 1].price,
-  };
-}
-
 export function filterProducts(products: ProductType[], filters: Filters) {
-  let filteredProducts: ProductType[] = [];
-  if (filters.categories.length === 0) filteredProducts = products;
-  else
-    filteredProducts = filterProductsByCategoryList(
-      products,
-      filters.categories
-    );
+  let filteredProducts = products;
 
-  if (filters.ratings.length === 0) filteredProducts = filteredProducts;
-  else
-    filteredProducts = filterProductsByStars(filteredProducts, filters.ratings);
+  filteredProducts = filterProductsBySearchTerm(
+    filteredProducts,
+    filters.search
+  );
 
-  sortProducts(products, filters.sort);
+  filteredProducts = filterProductsByPriceRange(
+    filteredProducts,
+    filters.price
+  );
+
+  filteredProducts = filterProductsByCategoryList(
+    filteredProducts,
+    filters.categories
+  );
+
+  filteredProducts = filterProductsByStars(filteredProducts, filters.ratings);
+
+  filteredProducts = sortProducts(filteredProducts, filters.sort);
 
   return filteredProducts;
 }
@@ -45,6 +44,7 @@ function filterProductsByCategoryList(
   products: ProductType[],
   categories: string[]
 ) {
+  if (categories.length === 0) return products;
   return products.filter((product) => categories.includes(product.category));
 }
 
@@ -76,7 +76,26 @@ function sortProducts(products: ProductType[], sortValue: SortValue) {
 }
 
 function filterProductsByStars(products: ProductType[], stars: string[]) {
+  if (stars.length === 0) return products;
   return products.filter((product) =>
     stars.includes(Math.floor(product.rating.rate) + " star")
+  );
+}
+
+function filterProductsByPriceRange(
+  products: ProductType[],
+  priceRange: PriceRange
+) {
+  return products.filter(
+    ({ price }) => price >= priceRange[0] && price <= priceRange[1]
+  );
+}
+
+function filterProductsBySearchTerm(
+  products: ProductType[],
+  searchTerm: string
+) {
+  return products.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 }
