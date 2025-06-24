@@ -1,8 +1,9 @@
 import DummyLink from "@/components/DummyLink";
 import Link from "next/link";
+import { FaCartShopping } from "react-icons/fa6";
+import Button from "./Button";
 import MobileNavbarLinks from "./MobileNavbarLinks";
 import Searchbar from "./Searchbar";
-import ShoppingCart from "./ShoppingCart";
 
 const navlinks = [
   { id: 1, label: "Shop", href: "/shop" },
@@ -23,7 +24,9 @@ export default function Navbar() {
         <DesktopNavbarLinks />
         <Searchbar />
         <MobileNavbarLinks />
-        <ShoppingCart />
+        <Button variant="secondary" display="iconRound">
+          <FaCartShopping />
+        </Button>
       </div>
     </div>
   );
