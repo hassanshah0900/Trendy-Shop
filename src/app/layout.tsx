@@ -6,6 +6,8 @@ import Container from "@/components/Container";
 import Footer from "@/components/Footer";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import Separator from "@/components/Separator";
+import { FilterContextProvider } from "@/contexts/FilterContext";
+import { Toaster } from "sonner";
 
 const satoshi = localFont({
   src: "../../public/fonts/satoshi-variable.ttf",
@@ -30,17 +32,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${intergralcf.variable} ${satoshi.variable}`}>
       <body className="overflow-x-hidden text-sm md:text-base font-satoshi text-body bg-background">
-        <Container>
-          <Navbar />
-          <Separator />
-        </Container>
-        {children}
-        <div className="translate-y-1/3">
+        <FilterContextProvider>
           <Container>
-            <NewsletterCTA />
+            <Navbar />
+            <Separator />
           </Container>
-        </div>
-        <Footer />
+          {children}
+          <div className="translate-y-1/3">
+            <Container>
+              <NewsletterCTA />
+            </Container>
+          </div>
+          <Footer />
+        </FilterContextProvider>
+        <Toaster />
       </body>
     </html>
   );

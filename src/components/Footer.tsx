@@ -1,10 +1,9 @@
-import React, { Fragment } from "react";
-import Link from "./Link";
-import Container from "./Container";
-import NextLink from "next/link";
+import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa6";
 import { IoLogoTwitter } from "react-icons/io5";
 import Button from "./Button";
+import Container from "./Container";
+import DummyLink from "./DummyLink";
 
 const companyLinks = [
   { id: 1, label: "About" },
@@ -47,12 +46,12 @@ export default function Footer() {
       <Container>
         <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-[1.5fr_1fr] md:grid-cols-[1.5fr_repeat(4,1fr)] gap-x-10 md:gap-x-4">
           <div>
-            <NextLink
+            <Link
               href={"/"}
               className="text-2xl font-bold text-primary font-integralcf inline-block mb-3 sm:mb-4  md:mb-5"
             >
               Trendy Shop
-            </NextLink>
+            </Link>
             <p>
               We have clothes that suits your style and which you’re proud to
               wear. From women to men.
@@ -74,7 +73,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-2 md:gap-3">
               {companyLinks.map((link) => (
                 <li key={link.id}>
-                  <Link href={"/"}>{link.label}</Link>
+                  <DummyLink>{link.label}</DummyLink>
                 </li>
               ))}
             </ul>
@@ -86,7 +85,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-2 md:gap-3">
               {supportLinks.map((link) => (
                 <li key={link.id}>
-                  <Link href={"/"}>{link.label}</Link>
+                  <DummyLink>{link.label}</DummyLink>
                 </li>
               ))}
             </ul>
@@ -98,7 +97,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-2 md:gap-3">
               {faqLinks.map((link) => (
                 <li key={link.id}>
-                  <Link href={"/"}>{link.label}</Link>
+                  <DummyLink>{link.label}</DummyLink>
                 </li>
               ))}
             </ul>
@@ -110,7 +109,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-2 md:gap-3">
               {resourcesLinks.map((link) => (
                 <li key={link.id}>
-                  <Link href={"/"}>{link.label}</Link>
+                  <DummyLink>{link.label}</DummyLink>
                 </li>
               ))}
             </ul>

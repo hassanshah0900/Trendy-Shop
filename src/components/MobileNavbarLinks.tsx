@@ -1,5 +1,5 @@
 import { TfiMenu } from "react-icons/tfi";
-import Link from "./Link";
+import DummyLink from "./DummyLink";
 import Slider from "./Slider";
 
 export default function MobileNavbarLinks() {
@@ -12,13 +12,13 @@ export default function MobileNavbarLinks() {
       <nav>
         <ul className="flex flex-col gap-3">
           <li>
-            <Link href={"/"}>Shop</Link>
+            <DummyLink>Shop</DummyLink>
           </li>
           <li>
-            <Link href={"/"}>New Arrivals</Link>
+            <DummyLink>New Arrivals</DummyLink>
           </li>
           <li>
-            <Link href={"/"}>Brands</Link>
+            <DummyLink>Brands</DummyLink>
           </li>
         </ul>
       </nav>

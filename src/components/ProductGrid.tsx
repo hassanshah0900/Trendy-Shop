@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ProductType } from "../types/product.type";
 import Product from "./Product";
 
