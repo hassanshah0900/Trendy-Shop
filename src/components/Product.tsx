@@ -10,7 +10,7 @@ export default function Product({
 }: Props) {
   return (
     <div>
-      <div className="w-full aspect-square relative rounded-2xl overflow-hidden  bg-product-background mb-4">
+      <div className="w-full aspect-square relative rounded-2xl overflow-hidden bg-product-background mb-4">
         <Image
           src={image}
           fill
@@ -19,7 +19,9 @@ export default function Product({
         />
       </div>
       <div className="space-y-1">
-        <h2 className="font-satoshi font-bold text-xl text-primary">{title}</h2>
+        <h2 className="font-satoshi font-bold text-lg md:text-xl text-primary">
+          {title}
+        </h2>
         <div className="flex justify-start items-center gap-4">
           <StarRating rating={rating.rate} starSize={16} />
           <span>
@@ -27,7 +29,7 @@ export default function Product({
             {`(${rating.count})`}
           </span>
         </div>
-        <div className="font-satoshi font-bold text-primary text-xl">
+        <div className="font-satoshi font-bold text-primary text-lg md:text-xl">
           ${price}
         </div>
       </div>
