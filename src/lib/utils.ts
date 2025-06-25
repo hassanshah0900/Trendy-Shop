@@ -1,6 +1,6 @@
 import { PriceRange } from "@/components/FilterPriceRange";
+import { ProductType } from "@/components/ProductGrid";
 import { Filters, SortValue } from "@/contexts/FilterContext";
-import { ProductType } from "@/types/product.type";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
