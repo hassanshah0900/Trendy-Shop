@@ -1,6 +1,6 @@
 import Image from "next/image";
 import StarRating from "./StarRating";
-import { ProductType } from "../types/product.type";
+import { ProductType } from "./ProductGrid";
 
 interface Props {
   product: ProductType;
@@ -16,6 +16,7 @@ export default function Product({
           fill
           className="object-center object-contain p-5"
           alt=""
+          sizes="(max-width: 560px) 100vw, (max-width: 768px): 50vw, (max-width: 1100): 37.5vw, 25vw"
         />
       </div>
       <div className="space-y-1">
