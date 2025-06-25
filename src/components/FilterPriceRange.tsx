@@ -13,7 +13,7 @@ interface Props {
 
 export default function FilterPriceRange({ priceRange, onPriceChange }: Props) {
   const [values, setValues] = useState<PriceRange>(priceRange);
-  const [isOpen, setOpen] = useState<boolean>(false);
+  const [isOpen, setOpen] = useState<boolean>(true);
 
   return (
     <div>
