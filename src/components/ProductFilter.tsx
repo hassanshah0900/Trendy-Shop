@@ -6,11 +6,9 @@ import FilterMultiSelect from "./FilterMultiSelect";
 import FilterPriceRange from "./FilterPriceRange";
 import Separator from "./Separator";
 import { useState } from "react";
+import { categories } from "@/data";
 
-interface Props {
-  categories: string[];
-}
-export default function ProductFilter({ categories }: Props) {
+export default function ProductFilter() {
   const { filters, setFilters } = useFilters();
   const [placeholderFilters, setPlaceholderFilters] =
     useState<Filters>(filters);

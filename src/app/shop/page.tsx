@@ -9,7 +9,7 @@ export default function ShopPage() {
     <Container>
       <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-5 my-10 items-start">
         <div className="hidden md:block">
-          <ProductFilter categories={[]} />
+          <ProductFilter />
         </div>
         <div>
           <div className="flex justify-between mb-5">
@@ -17,7 +17,7 @@ export default function ShopPage() {
               Shop
             </h1>
             <div className="flex md:justify-between justify-end gap-2">
-              <MobileProductFilter categories={[]} />
+              <MobileProductFilter />
               <ProductSorter />
             </div>
           </div>
