@@ -1,3 +1,5 @@
+"use client";
+
 import { SortValue, useFilters } from "@/contexts/FilterContext";
 import {
   DropdownMenu,
