@@ -1,3 +1,5 @@
+"use client";
+
 import { Filters, useFilters } from "@/contexts/FilterContext";
 import Button from "./Button";
 import FilterMultiSelect from "./FilterMultiSelect";
@@ -12,6 +14,7 @@ export default function ProductFilter({ categories }: Props) {
   const { filters, setFilters } = useFilters();
   const [placeholderFilters, setPlaceholderFilters] =
     useState<Filters>(filters);
+
   return (
     <aside className="border-border border rounded-2xl p-4 bg-secondary">
       <div className="font-bold text-xl md:text-2xl text-primary mb-6">
@@ -20,11 +23,11 @@ export default function ProductFilter({ categories }: Props) {
       <Separator />
       <div className="py-3 md:py-4">
         <FilterPriceRange
-          priceRange={placeholderFilters.price}
+          priceRange={[...placeholderFilters.price]}
           onPriceChange={(priceRange) => {
             setPlaceholderFilters({
               ...placeholderFilters,
-              price: [...priceRange],
+              price: priceRange,
             });
           }}
         />
@@ -33,7 +36,7 @@ export default function ProductFilter({ categories }: Props) {
       <div className="py-3 md:py-4">
         <FilterMultiSelect
           options={categories}
-          selectedOptions={placeholderFilters.categories}
+          selectedOptions={[...placeholderFilters.categories]}
           onChange={(selectedOptions) =>
             setPlaceholderFilters({
               ...placeholderFilters,
@@ -48,7 +51,7 @@ export default function ProductFilter({ categories }: Props) {
       <div className="py-3 md:py-4">
         <FilterMultiSelect
           options={["1 star", "2 star", "3 star", "4 star", "5 star"]}
-          selectedOptions={placeholderFilters.ratings}
+          selectedOptions={[...placeholderFilters.ratings]}
           onChange={(selectedOptions) =>
             setPlaceholderFilters({
               ...placeholderFilters,
@@ -61,12 +64,17 @@ export default function ProductFilter({ categories }: Props) {
       </div>
       <Separator />
       <Button
-        onClick={() => {
-          setFilters({ ...filters, ...placeholderFilters });
-        }}
+        type="button"
         className="my-4"
         variant="primary"
         display="block"
+        onClick={() =>
+          setFilters({
+            ...placeholderFilters,
+            sort: filters.sort,
+            search: filters.search,
+          })
+        }
       >
         Apply
       </Button>
